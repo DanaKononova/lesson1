@@ -74,9 +74,16 @@ public class Homework {
         }
     }
 
+    public static void task4() {
+        for (int i = 5; i <= 100; i += 5) {
+                System.out.print(i+" ");
+        }
+    }
+
     public static void main(String[] args){
         task1();
         task2();
         task3();
+        task4();
     }
 }
