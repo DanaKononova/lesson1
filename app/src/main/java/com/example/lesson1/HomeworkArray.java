@@ -8,17 +8,17 @@ public class HomeworkArray {
     public static void task2() {
         Scanner scan = new Scanner(System.in);
         Random random = new Random();
-        boolean isSize = false;
+        boolean isSizeCorrect = false;
         int size;
         do {
             System.out.println("Введите размер массива");
             size = scan.nextInt();
             if (size > 5 && size <= 10) {
-                isSize = true;
+                isSizeCorrect = true;
             }
             else
                 System.out.println("Неверный размер");
-        } while (!isSize);
+        } while (!isSizeCorrect);
 
         int size2 = 0;
         int[] array1 = new int[size];
@@ -30,10 +30,10 @@ public class HomeworkArray {
         }
         System.out.println(Arrays.toString(array1));
         int[] array2 = new int[size2];
-        int j = 0;
+        int index2 = 0;
         for (int i = 0; i < size; i++) {
             if (array1[i] % 2 == 0) {
-                array2[j++] = array1[i];
+                array2[index2++] = array1[i];
             }
         }
         System.out.println("Массив из чётных чисел предыдущего массива:");
