@@ -14,20 +14,20 @@ public class HomeworkArray {
         }
         System.out.println("Массив чисел\n" + Arrays.toString(array));
         System.out.println("Введите число, которое хотите удалить из массива");
-        int n = scan.nextInt();
-        boolean isInArray = false;
+        int deleteNum = scan.nextInt();
+        boolean isNumInArray = false;
         int size2 = 0;
         for (int a: array) {
-            if (a == n) {
-                isInArray = true;
+            if (a == deleteNum) {
+                isNumInArray = true;
             } else size2++;
         }
-        if (isInArray) {
+        if (isNumInArray) {
             int[] array2 = new int[size2];
-            int j = 0;
+            int index2 = 0;
             for (int i = 0; i < array.length; i++) {
-                if (array[i] != n) {
-                    array2[j++] = array[i];
+                if (array[i] != deleteNum) {
+                    array2[index2++] = array[i];
                 }
             }
             System.out.println("Массив без данного числа\n" + Arrays.toString(array2));
