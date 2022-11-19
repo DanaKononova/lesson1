@@ -30,7 +30,28 @@ public class HomeworkArray2 {
         System.out.println("Представление массива в виде слов:\n"+Arrays.deepToString(threeDimensionalWords));
     }
 
+    public static void task1() {
+        int[][] matrix;
+        System.out.println("Введите размеры двумерного массива. Сначала строки, потом столбцы");
+        int row = scan.nextInt();
+        int col = scan.nextInt();
+        matrix = new int[row][col];
+        int[] array = new int[row*col];
+        int indArray = 0;
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                matrix[i][j] = random.nextInt(20);
+                array[indArray++] = matrix[i][j];
+            }
+        }
+        System.out.println("Двумерный массив:");
+        System.out.println(Arrays.deepToString(matrix));
+        System.out.println("Одномерный массив с элементами двумерного:");
+        System.out.println(Arrays.toString(array));
+    }
+
     public static void main(String[] args) {
         task2();
+        task1();
     }
 }
