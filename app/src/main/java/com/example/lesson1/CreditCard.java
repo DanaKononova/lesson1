@@ -26,8 +26,7 @@ public class CreditCard {
     public void getSomeSumFromCard(float takenSum) {
         if (getCurrentSum() - takenSum >= 0) {
             this.currentSum -= takenSum;
-        }
-        else System.out.println("Недостаточно средств");
+        } else System.out.println("Недостаточно средств");
     }
 
     public void getInformation() {
@@ -39,11 +38,11 @@ public class CreditCard {
         Scanner scan = new Scanner(System.in);
         System.out.println("Ввод информации о картах");
         CreditCard[] cards = new CreditCard[3];
-        for (int i = 1; i <=3; i++) {
-            System.out.println("Карта "+i+"\nВведите номер счёта и начальную сумму на карте");
+        for (int i = 1; i <= 3; i++) {
+            System.out.println("Карта " + i + "\nВведите номер счёта и начальную сумму на карте");
             int accountNumber = scan.nextInt();
             float startSum = scan.nextFloat();
-            cards[i-1] = new CreditCard(accountNumber,startSum);
+            cards[i - 1] = new CreditCard(accountNumber, startSum);
         }
 
         System.out.println("\nИнформация о картах");
