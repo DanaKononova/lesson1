@@ -1,6 +1,6 @@
-package com.example.lesson1;
+package com.example.lessons.oop7;
 
-public class Dog extends Animal{
+public class Dog extends Animal {
     private String dogsTailsLengths;
 
     public String getDogsTailsLengths() {

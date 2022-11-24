@@ -1,6 +1,6 @@
-package com.example.lesson1;
+package com.example.lessons.oop7;
 
-public class Duck extends Animal{
+public class Duck extends Animal {
     private String ducksLake;
 
     public String getDucksLake() {

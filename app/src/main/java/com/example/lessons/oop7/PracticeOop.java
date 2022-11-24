@@ -1,4 +1,4 @@
-package com.example.lesson1;
+package com.example.lessons.oop7;
 
 public class PracticeOop {
     public static void main(String[] args) {

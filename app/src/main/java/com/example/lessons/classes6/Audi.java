@@ -1,8 +1,8 @@
-package com.example.lesson1;
+package com.example.lessons.classes6;
 
 import java.util.Scanner;
 
-public class Audi extends Car{
+public class Audi extends Car {
     String model;
 
     public Audi(String marka, String model) {

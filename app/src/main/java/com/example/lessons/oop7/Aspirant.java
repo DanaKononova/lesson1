@@ -1,6 +1,6 @@
-package com.example.lesson1;
+package com.example.lessons.oop7;
 
-public class Aspirant extends Student{
+public class Aspirant extends Student {
     private String scienceWork;
 
     public Aspirant(String firstName, String lastName, String group, double averageMark, String scienceWork) {

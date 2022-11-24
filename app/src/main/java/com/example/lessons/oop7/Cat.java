@@ -1,6 +1,6 @@
-package com.example.lesson1;
+package com.example.lessons.oop7;
 
-public class Cat extends Animal{
+public class Cat extends Animal {
     private String catsColor;
 
     public String getCatsColor() {

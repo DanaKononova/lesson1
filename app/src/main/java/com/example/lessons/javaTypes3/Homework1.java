@@ -1,4 +1,4 @@
-package com.example.lesson1;
+package com.example.lessons.javaTypes3;
 
 import java.util.Scanner;
 

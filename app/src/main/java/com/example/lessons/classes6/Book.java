@@ -1,4 +1,4 @@
-package com.example.lesson1;
+package com.example.lessons.classes6;
 
 public class Book {
     String authorName;

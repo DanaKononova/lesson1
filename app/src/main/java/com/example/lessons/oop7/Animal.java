@@ -1,4 +1,4 @@
-package com.example.lesson1;
+package com.example.lessons.oop7;
 
 public class Animal {
     private String food;
