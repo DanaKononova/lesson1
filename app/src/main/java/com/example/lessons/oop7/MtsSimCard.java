@@ -13,23 +13,13 @@ public final class MtsSimCard extends SimCard{
 
     @Override
     public void makeCall(String callNumber) {
-        boolean isCallAllowed = true;
-        if (callNumber.startsWith("29")) {
-            setBalance(getBalance() - 1);
-            if (getBalance()<0) {
-                isCallAllowed = false;
-                setBalance(getBalance()+1);
-            }
+        int callSum = callNumber.startsWith("29") ? 1 : 3;
+        if (getBalance() < callSum) {
+            System.out.println("Звонок запрещён");
         } else {
-            setBalance(getBalance() - 3);
-            if (getBalance()<0) {
-                isCallAllowed = false;
-                setBalance(getBalance()+3);
-            }
+            System.out.println("Звоню на номер: " + callNumber);
+            setBalance(getBalance() - callSum);
         }
-        if(isCallAllowed) {
-            System.out.println("Звоню на номер: "+callNumber);
-        } else System.out.println("Звонок запрещён");
     }
 
     @Override

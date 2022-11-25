@@ -13,20 +13,12 @@ public final class A1SimCard extends SimCard {
 
     @Override
     public void makeCall(String callNumber) {
-        if (callNumber.startsWith("33")) {
-            if (getBalance() < 1) {
-                System.out.println("Звонок запрещён");
-            } else {
-                System.out.println("Звоню на номер: " + callNumber);
-                setBalance(getBalance() - 1);
-            }
+        int callSum = callNumber.startsWith("33") ? 1 : 3;
+        if (getBalance() < callSum) {
+            System.out.println("Звонок запрещён");
         } else {
-            if (getBalance() < 3) {
-                System.out.println("Звонок запрещён");
-            } else {
-                System.out.println("Звоню на номер: " + callNumber);
-                setBalance(getBalance() - 3);
-            }
+            System.out.println("Звоню на номер: " + callNumber);
+            setBalance(getBalance() - callSum);
         }
     }
 
