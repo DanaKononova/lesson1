@@ -3,10 +3,12 @@ package com.example.lessons.oop7;
 public class SimCard {
     private String number;
     private int balance;
+    private int pinCode;
 
-    protected SimCard(String number, int balance) {
+    protected SimCard(String number, int balance, int pinCode) {
         this.balance = balance;
         this.number = number;
+        this.pinCode = pinCode;
     }
 
     public int getBalance() {
@@ -35,5 +37,9 @@ public class SimCard {
         if(getBalance() >= 0) {
             System.out.println("Принимаю звонок с номера "+recieveNumber);
         } else System.out.println("Звонок запрещён");
+    }
+
+    public boolean pinCodeCheck(int appliedPinCode) {
+        return appliedPinCode == this.pinCode;
     }
 }

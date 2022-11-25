@@ -2,8 +2,8 @@ package com.example.lessons.oop7;
 
 public final class LifeSimCard extends SimCard {
 
-    protected LifeSimCard(String number, int balance) {
-        super("44"+number, balance);
+    protected LifeSimCard(String number, int balance, int pinCode) {
+        super("44"+number, balance, pinCode);
     }
 
     @Override

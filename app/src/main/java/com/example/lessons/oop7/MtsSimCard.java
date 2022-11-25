@@ -2,8 +2,8 @@ package com.example.lessons.oop7;
 
 public final class MtsSimCard extends SimCard{
 
-    protected MtsSimCard(String number, int balance) {
-        super("29"+number, balance);
+    protected MtsSimCard(String number, int balance, int pinCode) {
+        super("29"+number, balance, pinCode);
     }
 
     @Override
