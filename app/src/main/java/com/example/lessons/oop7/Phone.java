@@ -18,7 +18,7 @@ public class Phone {
     public void insertNewSim (SimCard newSim) {
         setSim(newSim);
         System.out.println("Номер новой карты: "+ newSim.getNumber()+"\nИмя оператора карты: " + newSim.getOperatorName()
-        +"Баланс новой симки: "+ newSim.getBalance());
+        +" Баланс новой симки: "+ newSim.getBalance());
     }
 
     public void makeCall (String callNumber) {
@@ -31,5 +31,10 @@ public class Phone {
 
     public void printBalance(){
         System.out.println("Баланс симки: "+getSim().getBalance());
+    }
+
+    public void printInfo() {
+        System.out.println("Номер телефона: "+ getSim().getNumber()+"\nИмя оператора: "
+                + getSim().getOperatorName() +" Баланс на карте: "+ getSim().getBalance());
     }
 }

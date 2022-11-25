@@ -13,9 +13,8 @@ public class HomeProgram {
         String number;
         int balance, operator;
         for (int i = 0; i < arraySize; i++) {
-            System.out.println("Введите номер " + (i+1)+"-й симки");
-            number  = scan.next();
-            balance = random.nextInt(15);
+            number  = ""+(random.nextInt(1000000) + 1000000);
+            balance = random.nextInt(8);
             operator = random.nextInt(3)+1;
             switch (operator){
                 case 1: {
@@ -34,13 +33,18 @@ public class HomeProgram {
         }
 
         Phone phone = new Phone(new A1SimCard("5903599", 8));
-        System.out.println("Ваш телефон:");
-        System.out.println("Номер новой карты: "+ phone.getSim().getNumber()+"\nИмя оператора карты: "
-                + phone.getSim().getOperatorName() +" Баланс симки: "+ phone.getSim().getBalance());
+        phone.printInfo();
         for (int i = 0; i< arraySize; i++) {
+            phone.insertNewSim(simCards[i]);
             if (i % 2 == 0) {
-                phone.makeCall(simCards[i].getNumber());
-            } else phone.recieveCall(simCards[i].getNumber());
+                System.out.println("Введите номер телефона, на который будете звонить");
+                number = scan.next();
+                phone.makeCall(number);
+            } else{
+                System.out.println("Введите номер телефона, с которого будете принимать звонок");
+                number = scan.next();
+                phone.recieveCall(number);
+            }
             phone.printBalance();
         }
     }

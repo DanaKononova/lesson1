@@ -34,21 +34,9 @@ public final class MtsSimCard extends SimCard{
 
     @Override
     public void recieveCall(String recieveNumber) {
-        boolean isCallAllowed = true;
-        if (recieveNumber.startsWith("29")) {
-            setBalance(getBalance());
-            if (getBalance()<0) {
-                isCallAllowed = false;
-            }
-        } else {
+        if (!recieveNumber.startsWith("29")) {
             setBalance(getBalance() - 1);
-            if (getBalance()<0) {
-                isCallAllowed = false;
-                setBalance(getBalance()+1);
-            }
         }
-        if(isCallAllowed) {
-            System.out.println("Принимаю звонок с номера  "+recieveNumber);
-        } else System.out.println("Звонок запрещён");
+        System.out.println("Принимаю звонок с номера  " + recieveNumber);
     }
 }
