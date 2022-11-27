@@ -39,6 +39,12 @@ public class SimCard {
         } else System.out.println("Звонок запрещён");
     }
 
+    public void simCardInfo() {
+        System.out.println("Номер карты: "+ this.getNumber()+"\nИмя оператора: "
+                + this.getOperatorName() +" Баланс на карте: "+ this.getBalance()
+                +" Пин-код на карте: "+this.pinCode);
+    }
+
     public boolean pinCodeCheck(int appliedPinCode) {
         return appliedPinCode == this.pinCode;
     }

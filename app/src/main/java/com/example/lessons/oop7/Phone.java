@@ -95,6 +95,10 @@ public class Phone {
         }
     }
 
+    public boolean isPhoneOn() {
+        return isPhoneOn;
+    }
+
     public void phoneOff() {
         this.isPhoneOn = false;
         System.out.println("Телефон выключен");
