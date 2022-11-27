@@ -12,7 +12,6 @@ public class HomeProgram {
         SimCard[] simCards = new SimCard[arraySize];
         String number;
         int balance, operator, pinCode;
-        System.out.println("Информация о доступных симках:");
         for (int i = 0; i < arraySize; i++) {
             number = "" + (random.nextInt(1000000) + 1000000);
             balance = random.nextInt(8);
@@ -85,7 +84,6 @@ public class HomeProgram {
 
     public static void main(String[] args) {
         System.out.println("Виртуальный телефон. Включите телефон, чтобы начать работу");
-        boolean isPhoneOn = false;
         Phone phone = new Phone(null);
         SimCard[] simCards = generateCards();
         int comandNumber;
@@ -167,6 +165,6 @@ public class HomeProgram {
                 default:
                     break;
             }
-        } while (comandNumber != 8);
+        } while (comandNumber != 9);
     }
 }

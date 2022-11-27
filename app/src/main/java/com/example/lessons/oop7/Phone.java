@@ -26,7 +26,9 @@ public class Phone {
         setSim(newSim);
         System.out.println("Номер новой карты: "+ newSim.getNumber()+"\nИмя оператора карты: " + newSim.getOperatorName()
                 +" Баланс новой симки: "+ newSim.getBalance());
-        inputPinCode();
+        if (isPhoneOn) {
+            inputPinCode();
+        }
     }
 
     public void makeCall (String callNumber) {
@@ -89,6 +91,7 @@ public class Phone {
                 System.out.println("Верно.");
                 break;
             }
+            System.out.println("Неверный пин-код. Попыток осталось "+ (3 - triesNumber));
         }
         if (isCardBlocked) {
             System.out.println("Карта заблокирована");
