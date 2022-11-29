@@ -1,4 +1,4 @@
 package com.example.lessons.lesson8.homework;
 
-public class ProjectManager extends Workers{
+public class ProjectManager extends Worker {
 }

@@ -1,4 +1,4 @@
 package com.example.lessons.lesson8.homework;
 
-public class Marketer extends Workers{
+public class Marketer extends Worker {
 }
