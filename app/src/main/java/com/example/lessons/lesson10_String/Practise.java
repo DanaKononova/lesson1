@@ -58,6 +58,7 @@ public class Practise {
         s3.replace(s3.indexOf("*"), s3.indexOf("*")+1, "умножить");
         System.out.println(s3);
     }
+
     public static void main(String[] args) {
         // doChecksWithInputString("I like Java!!!");
         makeEquationsWithNumbers();
