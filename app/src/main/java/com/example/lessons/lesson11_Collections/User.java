@@ -10,7 +10,7 @@ public class User extends ArrayList {
     private String name;
 
     @Override
-    public boolean equals(@Nullable Object o) {
+    public boolean equals(Object o) {
         o = (User) o;
         if (this.name.equals(((User) o).getName())) return true;
         return false;

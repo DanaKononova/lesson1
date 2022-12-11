@@ -36,20 +36,22 @@ public class Messenger {
 
     public static void addNewUser() {
         String name;
+        User nameUser;
         System.out.println("Введите имя пользователя");
         do {
             name = scanner.nextLine();
             name = name.trim();
+            nameUser = new User(name);
             if (name.isEmpty() || name.equals("")) {
                 System.out.println("Введите ещё раз");
             } else {
-                if(users.contains(new User(name))) {
+                if(users.contains(nameUser)) {
                     System.out.println("Такой пользователь уже существует");
                 } else {
-                    users.add(new User(name));
+                    users.add(nameUser);
                 }
             }
-        } while (users.contains(name) || name.isEmpty() || name.equals(""));
+        } while (users.contains(nameUser) || name.isEmpty() || name.equals(""));
     }
 
     public static void printUsers() {
@@ -71,12 +73,11 @@ public class Messenger {
         System.out.println("Выберите пользователя, которому хотите написать сообщение");
         name = scanner.nextLine();
         name = name.trim();
-        System.out.println(name);
-        System.out.println(users.contains(name));
-        if (users.contains(name)) {
+        User nameUser = new User(name);
+        if (users.contains(nameUser)) {
             System.out.println("Введите сообщение, которое хотите написать");
             message = scanner.nextLine();
-            users.get(users.indexOf(name)).writeMessageToUsers(message);
+            users.get(users.indexOf(nameUser)).writeMessageToUsers(message);
         } else System.out.println("Нет такого пользователя");
     }
 
@@ -88,8 +89,9 @@ public class Messenger {
         String name;
         System.out.println("Выберите пользователя, сообщения которого хотите вывести");
         name = scanner.nextLine();
-        if(users.contains(name)) {
-            users.get(users.indexOf(name)).readMessage();
+        User nameUser = new User(name);
+        if(users.contains(nameUser)) {
+            users.get(users.indexOf(nameUser)).readMessage();
         } else System.out.println("Нет такого пользователя");
     }
 
