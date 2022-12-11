@@ -1,62 +1,59 @@
 package com.example.lessons.lesson11_Collections;
 
+import androidx.annotation.Nullable;
+
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Messenger {
-    private static ArrayList<User> users = new ArrayList<User>();
+    private static ArrayList<User> users = new ArrayList<>();
     static Scanner scanner = new Scanner(System.in);
+    static final int FIRST_ACTION = 1;
+    static final int SECOND_ACTION = 2;
+    static final int THIRD_ACTION = 3;
+    static final int FOURTH_ACTION = 4;
+    static final int FIFTH_ACTION = 5;
+
 
     public static int checkInputNumber() {
         int actionNumber = 0;
-        boolean isInputCorrect = false;
         String action;
         do {
             action = scanner.nextLine();
             try {
                 actionNumber = Integer.parseInt(action);
                 if (actionNumber > 0 && actionNumber <= 5) {
-                    isInputCorrect = true;
                 }
             } catch (NumberFormatException | InputMismatchException e) {
+                e.printStackTrace();
             } finally {
-                if (!isInputCorrect) System.out.println("Некорректный ввод. Повторите попытку.");
+                if (actionNumber <= 0 || actionNumber > 5) System.out.println("Некорректный ввод. Повторите попытку.");
             }
-        } while (!isInputCorrect);
+        } while (actionNumber <= 0 || actionNumber > 5);
         return actionNumber;
-    }
-
-    public static boolean isUsersEmpty() {
-        return users.isEmpty();
     }
 
     public static void addNewUser() {
         String name;
-        boolean isNameCorrect;
         System.out.println("Введите имя пользователя");
         do {
-            isNameCorrect = true;
             name = scanner.nextLine();
-            name.trim();
-            if (name == "") {
+            name = name.trim();
+            if (name.isEmpty() || name.equals("")) {
                 System.out.println("Введите ещё раз");
-                isNameCorrect = false;
             } else {
-                for (User user : users) {
-                    if (user.getName().equals(name)) {
-                        System.out.println("Такой пользователь уже существует");
-                        isNameCorrect = false;
-                        break;
-                    }
+                if(users.contains(new User(name))) {
+                    System.out.println("Такой пользователь уже существует");
+                } else {
+                    users.add(new User(name));
                 }
             }
-            if (isNameCorrect) users.add(new User(name));
-        } while (!isNameCorrect);
+        } while (users.contains(name) || name.isEmpty() || name.equals(""));
     }
 
     public static void printUsers() {
-        if (isUsersEmpty()) {
+        if (users.isEmpty()) {
             System.out.println("Пока нет пользователей");
             return;
         }
@@ -66,48 +63,37 @@ public class Messenger {
     }
 
     public static void writeToUser() {
-        if (isUsersEmpty()) {
+        if (users.isEmpty()) {
             System.out.println("Пока нет пользователей");
             return;
         }
-        boolean isUserFound;
         String name, message;
         System.out.println("Выберите пользователя, которому хотите написать сообщение");
         name = scanner.nextLine();
-        isUserFound = false;
-        for (User user : users) {
-            if (user.getName().equals(name)) {
-                System.out.println("Введите сообщение, которое хотите написать");
-                message = scanner.nextLine();
-                user.writeMessageToUsers(message);
-                isUserFound = true;
-                break;
-            }
-        }
-        if (!isUserFound) System.out.println("Нет такого пользователя");
+        name = name.trim();
+        System.out.println(name);
+        System.out.println(users.contains(name));
+        if (users.contains(name)) {
+            System.out.println("Введите сообщение, которое хотите написать");
+            message = scanner.nextLine();
+            users.get(users.indexOf(name)).writeMessageToUsers(message);
+        } else System.out.println("Нет такого пользователя");
     }
 
     public static void readUserMessages() {
-        if (isUsersEmpty()) {
+        if (users.isEmpty()) {
             System.out.println("Пока нет пользователей");
             return;
         }
-        boolean isUserFound;
         String name;
         System.out.println("Выберите пользователя, сообщения которого хотите вывести");
         name = scanner.nextLine();
-        isUserFound = false;
-        for (User user : users) {
-            if (user.getName().equals(name)) {
-                user.readMessage();
-                isUserFound = true;
-                break;
-            }
-        }
-        if (!isUserFound) System.out.println("Нет такого пользователя");
+        if(users.contains(name)) {
+            users.get(users.indexOf(name)).readMessage();
+        } else System.out.println("Нет такого пользователя");
     }
 
-    public static void mainInterface() {
+    public static void realization() {
         System.out.println("Мессенджер для начинающих");
         int actionNumber;
         do {
@@ -118,31 +104,31 @@ public class Messenger {
             System.out.println("Введите 5, чтобы закончить работу");
             actionNumber = checkInputNumber();
             switch (actionNumber) {
-                case 1: {
+                case FIRST_ACTION: {
                     addNewUser();
                     break;
                 }
-                case 2: {
+                case SECOND_ACTION: {
                     printUsers();
                     break;
                 }
-                case 3: {
+                case THIRD_ACTION: {
                     writeToUser();
                     break;
                 }
-                case 4: {
+                case FOURTH_ACTION: {
                     readUserMessages();
                     break;
                 }
-                case 5: {
+                case FIFTH_ACTION: {
                     System.out.println("Конец работы");
                     break;
                 }
             }
-        } while (actionNumber != 5);
+        } while (actionNumber != FIFTH_ACTION);
     }
 
     public static void main(String[] args) {
-        mainInterface();
+        realization();
     }
 }

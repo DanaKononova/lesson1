@@ -1,10 +1,20 @@
 package com.example.lessons.lesson11_Collections;
 
-import java.util.ArrayDeque;
+import androidx.annotation.Nullable;
 
-public class User {
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+
+public class User extends ArrayList {
     private ArrayDeque<String> messages = new ArrayDeque<>();
     private String name;
+
+    @Override
+    public boolean equals(@Nullable Object o) {
+        o = (User) o;
+        if (this.name.equals(((User) o).getName())) return true;
+        return false;
+    }
 
     public User(String name) {
         this.name = name;
