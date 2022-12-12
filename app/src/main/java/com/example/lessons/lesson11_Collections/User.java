@@ -5,7 +5,7 @@ import androidx.annotation.Nullable;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 
-public class User extends ArrayList {
+public class User {
     private ArrayDeque<String> messages = new ArrayDeque<>();
     private String name;
 

@@ -9,28 +9,27 @@ import java.util.Scanner;
 public class Messenger {
     private static ArrayList<User> users = new ArrayList<>();
     static Scanner scanner = new Scanner(System.in);
-    static final int FIRST_ACTION = 1;
-    static final int SECOND_ACTION = 2;
-    static final int THIRD_ACTION = 3;
-    static final int FOURTH_ACTION = 4;
-    static final int FIFTH_ACTION = 5;
-
+    private static final int FIRST_ACTION = 1;
+    private static final int SECOND_ACTION = 2;
+    private static final int THIRD_ACTION = 3;
+    private static final int FOURTH_ACTION = 4;
+    private static final int FIFTH_ACTION = 5;
 
     public static int checkInputNumber() {
         int actionNumber = 0;
         String action;
+        boolean isNumberOutOfBounds;
         do {
             action = scanner.nextLine();
+            isNumberOutOfBounds = actionNumber <= 0 || actionNumber > 5;
             try {
                 actionNumber = Integer.parseInt(action);
-                if (actionNumber > 0 && actionNumber <= 5) {
-                }
             } catch (NumberFormatException | InputMismatchException e) {
                 e.printStackTrace();
             } finally {
-                if (actionNumber <= 0 || actionNumber > 5) System.out.println("Некорректный ввод. Повторите попытку.");
+                if (isNumberOutOfBounds) System.out.println("Некорректный ввод. Повторите попытку.");
             }
-        } while (actionNumber <= 0 || actionNumber > 5);
+        } while (isNumberOutOfBounds);
         return actionNumber;
     }
 
