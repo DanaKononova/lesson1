@@ -9,7 +9,7 @@ public class Horse extends Pet{
     }
 
     @Override
-    public void printAbout() {
+    public void printInfo() {
         System.out.println(" "+getName()+", Horse's breed: "+getBreed()+", Horse's gender: "+this.color);
     }
 }

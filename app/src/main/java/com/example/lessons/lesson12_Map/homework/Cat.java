@@ -9,7 +9,7 @@ public class Cat extends Pet {
     }
 
     @Override
-    public void printAbout() {
+    public void printInfo() {
         System.out.println(" "+getName()+", Cat's breed: "+getBreed()+", Cat's gender: "+this.gender);
     }
 }

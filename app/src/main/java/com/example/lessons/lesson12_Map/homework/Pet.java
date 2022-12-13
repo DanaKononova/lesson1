@@ -21,6 +21,5 @@ public abstract class Pet {
         this.breed = breed;
     }
 
-    public void printAbout(){
-    }
+    public abstract void printInfo();
 }
