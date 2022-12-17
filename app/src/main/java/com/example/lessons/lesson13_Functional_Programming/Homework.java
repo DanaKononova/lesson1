@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Homework {
     private static Scanner scanner = new Scanner(System.in);
@@ -20,22 +21,17 @@ public class Homework {
         System.out.println(numbers);
 
         System.out.println("Вывод чётных чисел в диапозоне от 7 до 17");
-        List<Integer> filteredNumbers1 = numbers.stream()
+        Stream<Integer> filteredNumbers1 = numbers.stream()
                 .distinct()
                 .peek(numb -> printEvenInBounds(numb))
                 .map(numb -> numb * 2)
                 .filter(numb -> numb > 10)
-                .peek(System.out::println)
-                .collect(Collectors.toList());
+                .peek(System.out::println);
         System.out.println("Удалены дубликаты, элементы умножены на 2 и оставлены только те, которые > 10");
         System.out.println(filteredNumbers1);
-        int size = filteredNumbers1.size();
+        long size = filteredNumbers1.count();
         System.out.println("Размер получившегося списка: " + size);
-        double averageSum = 0;
-        for (Integer number: filteredNumbers1) {
-            averageSum += number;
-        }
-        averageSum = averageSum / size;
+        double averageSum = filteredNumbers1.mapToDouble(numb -> numb).sum() / size;
         System.out.println("Среднее арифметическое оставшихся элементиов: " + averageSum);
     }
 
