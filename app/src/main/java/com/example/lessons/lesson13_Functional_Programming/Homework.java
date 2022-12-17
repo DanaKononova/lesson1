@@ -10,7 +10,7 @@ public class Homework {
     private static Scanner scanner = new Scanner(System.in);
     private static Random random = new Random();
 
-    public static void realization() {
+    public static void realizeMain() {
         List<Integer> numbers = new ArrayList<>();
         System.out.println("Введите количество элементов коллекции");
         int amount = amountInputCheck();
@@ -20,20 +20,21 @@ public class Homework {
         System.out.println(numbers);
 
         System.out.println("Вывод чётных чисел в диапозоне от 7 до 17");
-        List<Integer> filteredNumbers2 = numbers.stream()
-                .distinct()
-                .filter(numb -> numb % 2 == 0 && numb >= 7 && numb <= 17)
-                .collect(Collectors.toList());
-        System.out.println(filteredNumbers2);
-
-        System.out.println("Удалены дубликаты, элементы умножены на 2 и оставлены только те, которые > 10");
         List<Integer> filteredNumbers1 = numbers.stream()
                 .distinct()
+                .peek(numb -> printEvenInBounds(numb))
                 .map(numb -> numb * 2)
-                .filter(numb -> numb > 10)
+                .filter(numb -> numb > 10
+                )
                 .collect(Collectors.toList());
+        System.out.println("Удалены дубликаты, элементы умножены на 2 и оставлены только те, которые > 10");
+        System.out.println(filteredNumbers1);
         System.out.println("Размер получившегося списка: " + filteredNumbers1.size());
         System.out.println("Среднее арифметическое оставшихся элементиов: " + (filteredNumbers1.stream().mapToDouble(numb -> numb).sum() / filteredNumbers1.size()));
+    }
+
+    public static void printEvenInBounds(Integer numb) {
+        if (numb % 2 == 0 && numb >= 7 && numb <= 17) System.out.println(numb);
     }
 
     public static int amountInputCheck() {
@@ -50,6 +51,6 @@ public class Homework {
     }
 
     public static void main(String[] args) {
-        realization();
+        realizeMain();
     }
 }
