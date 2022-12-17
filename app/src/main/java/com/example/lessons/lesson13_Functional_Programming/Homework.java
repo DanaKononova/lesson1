@@ -24,13 +24,19 @@ public class Homework {
                 .distinct()
                 .peek(numb -> printEvenInBounds(numb))
                 .map(numb -> numb * 2)
-                .filter(numb -> numb > 10
-                )
+                .filter(numb -> numb > 10)
+                .peek(System.out::println)
                 .collect(Collectors.toList());
         System.out.println("Удалены дубликаты, элементы умножены на 2 и оставлены только те, которые > 10");
         System.out.println(filteredNumbers1);
-        System.out.println("Размер получившегося списка: " + filteredNumbers1.size());
-        System.out.println("Среднее арифметическое оставшихся элементиов: " + (filteredNumbers1.stream().mapToDouble(numb -> numb).sum() / filteredNumbers1.size()));
+        int size = filteredNumbers1.size();
+        System.out.println("Размер получившегося списка: " + size);
+        double averageSum = 0;
+        for (Integer number: filteredNumbers1) {
+            averageSum += number;
+        }
+        averageSum = averageSum / size;
+        System.out.println("Среднее арифметическое оставшихся элементиов: " + averageSum);
     }
 
     public static void printEvenInBounds(Integer numb) {
