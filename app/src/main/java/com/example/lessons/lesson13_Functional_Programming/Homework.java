@@ -21,17 +21,16 @@ public class Homework {
         System.out.println(numbers);
 
         System.out.println("Вывод чётных чисел в диапозоне от 7 до 17");
-        Stream<Integer> filteredNumbers1 = numbers.stream()
+        List<Integer> filteredNumbers1 = numbers.stream()
                 .distinct()
                 .peek(numb -> printEvenInBounds(numb))
                 .map(numb -> numb * 2)
-                .filter(numb -> numb > 10);
+                .filter(numb -> numb > 10)
+                .collect(Collectors.toList());
         System.out.println("Удалены дубликаты, элементы умножены на 2 и оставлены только те, которые > 10");
-        double averageSum = filteredNumbers1
-                .reduce((x, y) -> x+y)
-                .get();
-        averageSum /= filteredNumbers1.count();
-        System.out.println("Размер получившегося списка: " + filteredNumbers1.count());
+        long size = filteredNumbers1.stream().count();
+        double averageSum = filteredNumbers1.stream().reduce((x, y) -> x+y).get() / size;
+        System.out.println("Размер получившегося списка: " + size);
         System.out.println("Среднее арифметическое оставшихся элементиов: " + averageSum);
     }
 
@@ -40,9 +39,9 @@ public class Homework {
     }
 
     public static int amountInputCheck() {
-        String amountS = scanner.next();
         int amount = -1;
         do {
+            String amountS = scanner.nextLine();
             try {
                 amount = Integer.parseInt(amountS);
             } catch (NumberFormatException e) {
