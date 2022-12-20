@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CallCentre {
+
     public static void main(String[] args) {
         List<ComingCall> comingCalls = new ArrayList<>();
         for (int i = 1; i <= 8; i++) {
@@ -12,12 +13,17 @@ public class CallCentre {
 
         Runnable myRunnable = () -> {
             for (int i = 0; i < 8; i++) {
-                synchronized (comingCalls) {
-                    comingCalls.get(i).operateCall(Thread.currentThread().getName());
-                    try {
-                        Thread.sleep(800);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
+                while (!comingCalls.isEmpty()) {
+                    synchronized (comingCalls) {
+                        if (!comingCalls.isEmpty()) {
+                            comingCalls.get(i).operateCall(Thread.currentThread().getName());
+                            try {
+                                Thread.sleep(800);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                            comingCalls.remove(i);
+                        }
                     }
                 }
             }
