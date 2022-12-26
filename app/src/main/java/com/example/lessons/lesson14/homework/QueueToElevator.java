@@ -12,12 +12,14 @@ public class QueueToElevator {
     }
 
     public synchronized void putPeople(int maxPeople, String elevator) {
-        if (peoples > maxPeople) {
-            this.peoples -= maxPeople;
-            System.out.println(elevator + " лифт поднял " + maxPeople);
-        } else {
-            System.out.println(elevator + " лифт поднял " + this.peoples);
-            this.peoples = 0;
+        if (peoples != 0) {
+            if (peoples > maxPeople) {
+                this.peoples -= maxPeople;
+                System.out.println(elevator + " лифт поднял " + maxPeople);
+            } else {
+                System.out.println(elevator + " лифт поднял " + this.peoples);
+                this.peoples = 0;
+            }
         }
     }
 }

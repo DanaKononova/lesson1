@@ -1,7 +1,7 @@
 package com.example.lessons.lesson14.homework;
 
 public class FastElevator implements Runnable {
-    private final int MAX_CAPACITY = 10;
+    private final int MAX_CAPACITY = 6;
     private QueueToElevator queue;
 
     public FastElevator(QueueToElevator queue) {
